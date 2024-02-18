@@ -9,6 +9,23 @@ import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import CustomBarChart from "./CustomBarChart";
 
+type StatData = {
+  stats: {
+    totalPrice: number;
+    sold: number;
+    unsold: number;
+  };
+  barChartData: {
+    [key: string]: {
+      count: number;
+    };
+  };
+  pieChartData: {
+    name: string;
+    value: number;
+  }[];
+};
+
 type DetailModalProps = {
   open: boolean;
   handleClose: () => void;
@@ -29,7 +46,7 @@ const style = {
 };
 
 const DetailModal = ({ open, handleClose, month }: DetailModalProps) => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<StatData | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -66,45 +83,48 @@ const DetailModal = ({ open, handleClose, month }: DetailModalProps) => {
             {new Date(0, month, 0).toLocaleString("default", { month: "long" })}
           </Typography>
           <Divider sx={{ marginBottom: 4 }} />
+          {data && (
+            <>
+              <Table sx={{ marginBottom: 4 }}>
+                <TableRow>
+                  <TableCell>Total Sale</TableCell>
+                  <TableCell>{data.stats.totalPrice}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Total Sold Items</TableCell>
+                  <TableCell>{data.stats.sold}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Total Not Sold Items</TableCell>
+                  <TableCell>{data.stats.unsold}</TableCell>
+                </TableRow>
+              </Table>
 
-          <Table sx={{ marginBottom: 4 }}>
-            <TableRow>
-              <TableCell>Total Sale</TableCell>
-              <TableCell>{data.stats?.totalPrice}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Total Sold Items</TableCell>
-              <TableCell>{data.stats?.sold}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Total Not Sold Items</TableCell>
-              <TableCell>{data.stats?.unsold}</TableCell>
-            </TableRow>
-          </Table>
-
-          <Box>
-            <Box>
-              <Typography variant="h6" fontWeight={700} >
-                Bar Chart
-                <CustomBarChart barChartData={data.barChartData} />
-              </Typography>
-            </Box>
-            <Box>
-              <Typography variant="h6" fontWeight={700}>
-                Pie Chart
-              </Typography>
-              <PieChart
-              fullWidth
-                sx={{ marginLeft: -12.5 }}
-                series={[
-                  {
-                    data: data.pieChartData,
-                  },
-                ]}
-                height={200}
-              />
-            </Box>
-          </Box>
+              <Box>
+                <Box>
+                  <Typography variant="h6" fontWeight={700}>
+                    Bar Chart
+                    <CustomBarChart barChartData={data.barChartData} />
+                  </Typography>
+                </Box>
+                <Box>
+                  <Typography variant="h6" fontWeight={700}>
+                    Pie Chart
+                  </Typography>
+                  <PieChart
+                    fullWidth
+                    sx={{ marginLeft: -12.5 }}
+                    series={[
+                      {
+                        data: data.pieChartData,
+                      },
+                    ]}
+                    height={200}
+                  />
+                </Box>
+              </Box>
+            </>
+          )}
         </Box>
       </Box>
     </Modal>

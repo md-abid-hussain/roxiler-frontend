@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, SetStateAction } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Box from "@mui/material/Box";
@@ -54,13 +54,13 @@ const Test = () => {
     fetchData();
   }, [currentPage, month, search]);
 
-  const handleChange = (event) => {
+  const handleChange = (event: { target: { value: SetStateAction<string>; }; }) => {
     setMonth(event.target.value);
     setCurrentPage(1);
   };
   return (
     <Box>
-      <DetailModal open={open} handleClose={handleClose} month={month} />
+      <DetailModal open={open} handleClose={handleClose} month={parseInt(month)} />
       <Stack
         flexDirection="row"
         justifyContent="space-between"

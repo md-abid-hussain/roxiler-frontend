@@ -7,7 +7,20 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Row from "./Row";
 
-const TransactionTable = ({ data }) => {
+type TransactionTableProps = {
+  data: {
+    productId: number;
+    title: string;
+    price: number;
+    category: string;
+    sold: boolean;
+    dateOfSale: string;
+    image: string;
+    description: string;
+  }[];
+};
+
+const TransactionTable = ({ data }: TransactionTableProps) => {
   return (
     <div>
       <TableContainer component={Paper}>

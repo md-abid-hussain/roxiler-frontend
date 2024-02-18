@@ -10,7 +10,20 @@ import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
 import TableBody from "@mui/material/TableBody";
 
-const Row = ({ row }) => {
+type RowProps = {
+  row: {
+    productId: number;
+    title: string;
+    price: number;
+    category: string;
+    sold: boolean;
+    dateOfSale: string;
+    image: string;
+    description: string;
+  };
+};
+
+const Row = ({ row }: RowProps) => {
   const [open, setOpen] = useState(false);
   return (
     <>

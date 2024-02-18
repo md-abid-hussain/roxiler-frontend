@@ -1,6 +1,14 @@
 import { BarChart } from "@mui/x-charts/BarChart";
 
-const CustomBarChart = ({ barChartData }) => {
+type CustomBarChartProps = {
+  barChartData: {
+    [key: string]: {
+      count: number;
+    };
+  };
+};
+
+const CustomBarChart = ({ barChartData }: CustomBarChartProps) => {
   const chartSetting = {
     yAxis: [
       {
