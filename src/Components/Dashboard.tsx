@@ -9,6 +9,7 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import TextField from "@mui/material/TextField";
 import TransactionTable from "./TransactionTable";
+import DetailModal from "./DetailModal";
 
 const menuItems = [
   { label: "January", value: 1 },
@@ -26,11 +27,15 @@ const menuItems = [
 ];
 
 const Test = () => {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   const [data, setData] = useState([]);
   const [month, setMonth] = useState("3");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [search, setSearch] = useState("");
+  
   const fetchData = async () => {
     const res = await fetch(
       `http://localhost:4000/api/v1/transactions?month=${month}&currentPage=${currentPage}&limit=10&search=${search}`
@@ -54,9 +59,14 @@ const Test = () => {
   };
   return (
     <div>
+      <DetailModal open={open} handleClose={handleClose} month={month} />
       <Typography variant="h2" gutterBottom component="div">
         Transaction Dashboard
       </Typography>
+      <Button variant="contained" onClick={handleOpen}>
+        Open Modal
+      </Button>
+
       <Box margin={3}>
         <FormControl fullWidth>
           <Stack flexDirection="row" justifyContent="space-between">
