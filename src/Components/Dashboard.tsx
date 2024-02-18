@@ -10,6 +10,7 @@ import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import TextField from "@mui/material/TextField";
 import TransactionTable from "./TransactionTable";
 import DetailModal from "./DetailModal";
+import BarChartIcon from "@mui/icons-material/BarChart";
 
 const menuItems = [
   { label: "January", value: 1 },
@@ -35,10 +36,10 @@ const Test = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [search, setSearch] = useState("");
-  
+
   const fetchData = async () => {
     const res = await fetch(
-      `http://localhost:4000/api/v1/transactions?month=${month}&currentPage=${currentPage}&limit=10&search=${search}`
+      `https://transaction-backend.onrender.com/api/v1/transactions?month=${month}&currentPage=${currentPage}&limit=10&search=${search}`
     );
     const data = await res.json();
     setData(data.data);
@@ -58,15 +59,31 @@ const Test = () => {
     setCurrentPage(1);
   };
   return (
-    <div>
+    <Box>
       <DetailModal open={open} handleClose={handleClose} month={month} />
-      <Typography variant="h2" gutterBottom component="div">
-        Transaction Dashboard
-      </Typography>
-      <Button variant="contained" onClick={handleOpen}>
-        Open Modal
-      </Button>
+      <Stack
+        flexDirection="row"
+        justifyContent="space-between"
+        sx={{ backgroundColor: "#27496D" }}
+        padding={2}
+      >
+        <Typography
+          variant="h1"
+          fontSize={44}
+          fontWeight={900}
+          color={"white"}
+          gutterBottom
+          component="div"
+        >
+          Transaction Dashboard
+        </Typography>
+        <Button onClick={handleOpen}>
+          <Typography variant="h5">Monthly Statistics</Typography>
+          <BarChartIcon fontSize="large"/>
+        </Button>
+      </Stack>
 
+        <Box marginInline="auto" width={1000}>
       <Box margin={3}>
         <FormControl fullWidth>
           <Stack flexDirection="row" justifyContent="space-between">
@@ -125,7 +142,8 @@ const Test = () => {
           Next <KeyboardArrowRightIcon />
         </Button>
       </Stack>
-    </div>
+      </Box>
+    </Box>
   );
 };
 
