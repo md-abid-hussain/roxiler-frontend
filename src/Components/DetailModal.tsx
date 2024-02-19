@@ -1,7 +1,6 @@
 import { Modal, TableBody } from "@mui/material";
 import { Box } from "@mui/system";
 import { Typography } from "@mui/material";
-// import { useEffect, useState } from "react";
 import Divider from "@mui/material/Divider";
 import Table from "@mui/material/Table";
 import TableRow from "@mui/material/TableRow";
@@ -11,22 +10,6 @@ import CustomPieChart from "./CustomPieChart";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useQuery } from "react-query";
 
-// type StatData = {
-//   stats: {
-//     totalPrice: number;
-//     sold: number;
-//     unsold: number;
-//   };
-//   barChartData: {
-//     [key: string]: {
-//       count: number;
-//     };
-//   };
-//   pieChartData: {
-//     name: string;
-//     value: number;
-//   }[];
-// };
 
 type DetailModalProps = {
   open: boolean;
@@ -48,19 +31,6 @@ const style = {
 };
 
 const DetailModal = ({ open, handleClose, month }: DetailModalProps) => {
-  // const [data, setData] = useState<StatData | null>(null);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const res = await fetch(
-  //       `https://transaction-backend.onrender.com/api/v1/transactions/monthly-stats?month=3`
-  //     );
-  //     const data = await res.json();
-  //     setData(data);
-  //   };
-  //   fetchData();
-  // }, []);
-
   const { isLoading, error, data } = useQuery({
     queryKey: ["monthly-stats", month],
     queryFn: async () => {
@@ -117,16 +87,6 @@ const DetailModal = ({ open, handleClose, month }: DetailModalProps) => {
     );
   }
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const res = await fetch(
-  //       `https://transaction-backend.onrender.com/api/v1/transactions/monthly-stats?month=${month}`
-  //     );
-  //     const data = await res.json();
-  //     setData(data);
-  //   };
-  //   fetchData();
-  // }, [month]);
   return (
     <Modal
       open={open}
@@ -141,36 +101,6 @@ const DetailModal = ({ open, handleClose, month }: DetailModalProps) => {
             {new Date(0, month, 0).toLocaleString("default", { month: "long" })}
           </Typography>
           <Divider sx={{ marginBottom: 4 }} />
-          {/* {data && (
-            <>
-              <Table sx={{ marginBottom: 4 }}>
-                <TableBody>
-                <TableRow>
-                  <TableCell>Total Sale</TableCell>
-                  <TableCell>{data.stats.totalPrice}</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Total Sold Items</TableCell>
-                  <TableCell>{data.stats.sold}</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Total Not Sold Items</TableCell>
-                  <TableCell>{data.stats.unsold}</TableCell>
-                </TableRow>
-                </TableBody>
-              </Table>
-
-              <Box>
-                <Box>
-                  <Typography variant="h6" fontWeight={700}>
-                    Bar Chart
-                    <CustomBarChart barChartData={data.barChartData} />
-                  </Typography>
-                </Box>
-                <CustomPieChart pieChartData={data.pieChartData} />
-              </Box>
-            </>
-          )} */}
           {content}
         </Box>
       </Box>
