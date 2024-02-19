@@ -91,7 +91,7 @@ const Test = () => {
 
   if (transactionData) {
     content = (
-      <Box>
+      <Box marginBottom="4rem" padding={0.25}>
         <Box>
           <TransactionTable data={transactionData.data} />
         </Box>
@@ -122,7 +122,7 @@ const Test = () => {
   }
 
   return (
-    <Box>
+    <Box minHeight="100vh">
       <DetailModal
         open={open}
         handleClose={handleClose}
@@ -183,9 +183,11 @@ const Test = () => {
       <Fab
         variant="extended"
         sx={{
-          position: "absolute",
-          bottom: "1rem",
-          right: "1rem",
+          position: "fixed",
+          top: 'auto',
+          right: 20,
+          bottom: 20,
+          left: 'auto',
           color: "#27496D",
           "&:hover": { backgroundColor: "#27496D", color: "white" },
         }}
