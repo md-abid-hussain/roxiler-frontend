@@ -24,8 +24,12 @@ const style = {
   borderRadius: 2,
   bgcolor: "white",
   boxShadow: 24,
-  height: 600,
-  width: 800,
+  height: 600, 
+  width: {
+    xs: "90%",
+    sm: "70%",
+    md: "800px",
+  },
   overflow: "auto",
   p: 4,
 };
@@ -81,6 +85,7 @@ const DetailModal = ({ open, handleClose, month }: DetailModalProps) => {
               <CustomBarChart barChartData={data.barChartData} />
             </Typography>
           </Box>
+          <Divider sx={{marginTop:2, marginBottom:4}}/>
           <CustomPieChart pieChartData={data.pieChartData} />
         </Box>
       </>

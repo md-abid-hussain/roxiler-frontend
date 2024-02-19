@@ -15,16 +15,27 @@ const CustomPieChart = ({ pieChartData }: CustomBarChartProps) => {
       <Typography variant="h6" fontWeight={700}>
         Pie Chart
       </Typography>
-      <PieChart
-        fullWidth
-        sx={{ marginLeft: -12.5 }}
-        series={[
-          {
-            data: pieChartData,
-          },
-        ]}
-        height={200}
-      />
+      <Box sx={{display:'grid',placeContent:"center"}}>
+        <PieChart
+          slotProps={{
+            legend: {
+              direction: "row",
+              position: {
+                vertical: "bottom",
+                horizontal: "middle",
+              },
+            },
+          }}
+          margin={{ top: -24,right: 12, bottom: 12, left: 12 }}
+          series={[
+            {
+              data: pieChartData,
+            },
+          ]}
+          width={300}
+          height={450}
+        />
+      </Box>
     </Box>
   );
 };
