@@ -1,30 +1,56 @@
-# React + TypeScript + Vite
+# Frontend Service 
+This is the frontend service for your application. It provides a user interface for managing transactions.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### URL : [`Frontend`](https://transaction-dashboard-frontend.onrender.com/) [Deployed on render. So it will take time for starting for first time. Approx 2-3 mins]
 
-Currently, two official plugins are available:
+## Backend Service: [Link to Backend Service](https://transaction-backend.onrender.com/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Getting Started
 
-## Expanding the ESLint configuration
+To get started with the frontend service, follow these steps:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. Clone the repository: `git clone https://github.com/md-abid-hussain/roxiler-frontend`
+2. Change directory: `cd roxiler-frontend`
+3. Install dependencies: `npm install`
+4. Start the development server: `npm run dev`
 
-- Configure the top-level `parserOptions` property like this:
+## Features
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+- View all transactions
+- Search transactions
+- Pagination support
+- View transaction statistics
+- Visualize transactions with bar and pie charts
+- View monthly transaction statistics
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Usage
+
+### View All Transactions
+
+To view all transactions, navigate to the Transactions page.
+
+### Search Transactions
+
+To search for specific transactions, use the search bar on the Transactions page.
+
+### Pagination
+
+The Transactions page supports pagination. Use the navigation buttons at the bottom of the page to navigate between pages.
+
+### View Transaction Statistics
+
+To view statistics about transactions, navigate to the Statistics page.
+
+### Visualize Transactions
+
+To visualize transactions, navigate to the Charts page. The Charts page provides both bar and pie chart visualizations.
+
+### View Monthly Statistics
+
+To view monthly statistics about transactions, navigate to the Monthly Statistics page.
+
+## Created Using 
+ - vite
+ - react
+ - MUI and MUI-X
+ - React Query
