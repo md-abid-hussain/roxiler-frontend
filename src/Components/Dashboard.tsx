@@ -12,6 +12,7 @@ import TransactionTable from "./TransactionTable";
 import DetailModal from "./DetailModal";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import CircularProgress from "@mui/material/CircularProgress";
+import Fab from "@mui/material/Fab";
 import { useQuery } from "react-query";
 
 const menuItems = [
@@ -128,8 +129,6 @@ const Test = () => {
         month={parseInt(month)}
       />
       <Stack
-        flexDirection="row"
-        justifyContent="space-between"
         sx={{ backgroundColor: "#27496D" }}
         padding={2}
       >
@@ -138,21 +137,17 @@ const Test = () => {
           fontSize={44}
           fontWeight={900}
           color={"white"}
-          gutterBottom
           component="div"
+          textAlign="center"
         >
           Transaction Dashboard
         </Typography>
-        <Button onClick={handleOpen}>
-          <Typography variant="h5">Monthly Statistics</Typography>
-          <BarChartIcon fontSize="large" />
-        </Button>
       </Stack>
 
-      <Box marginInline="auto" width={1000}>
+      <Box marginInline="auto" maxWidth={1000}>
         <Box margin={3}>
           <FormControl fullWidth>
-            <Stack flexDirection="row" justifyContent="space-between">
+            <Stack flexDirection="row" flexWrap="wrap" gap={4} justifyContent="space-between">
               <Box width={300}>
                 <TextField
                   fullWidth
@@ -185,6 +180,20 @@ const Test = () => {
         </Box>
         {content}
       </Box>
+      <Fab
+        variant="extended"
+        sx={{
+          position: "absolute",
+          bottom: "1rem",
+          right: "1rem",
+          color: "#27496D",
+          "&:hover": { backgroundColor: "#27496D", color: "white" },
+        }}
+        onClick={handleOpen}
+      >
+        <BarChartIcon sx={{ mr: 1 }} />
+        Show Monthly Stats
+      </Fab>
     </Box>
   );
 };

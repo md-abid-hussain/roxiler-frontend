@@ -9,6 +9,8 @@ import Box from "@mui/material/Box";
 import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
 import TableBody from "@mui/material/TableBody";
+import { TableContainer } from "@mui/material";
+import Paper from "@mui/material/Paper";
 
 type RowProps = {
   row: {
@@ -52,7 +54,8 @@ const Row = ({ row }: RowProps) => {
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={7}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box padding={2}>
-              <Table size="small">
+              <TableContainer component={Paper} sx={{overflowX:'auto'}}>
+              <Table size="small" >
                 <TableHead>
                   <TableRow>
                     <TableCell>Image</TableCell>
@@ -68,6 +71,7 @@ const Row = ({ row }: RowProps) => {
                   </TableRow>
                 </TableBody>
               </Table>
+              </TableContainer>
             </Box>
           </Collapse>
         </TableCell>

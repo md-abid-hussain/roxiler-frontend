@@ -23,7 +23,7 @@ type TransactionTableProps = {
 const TransactionTable = ({ data }: TransactionTableProps) => {
   return (
     <div>
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} sx={{overflowX:"auto"}}>
         <Table>
           <TableHead>
             <TableRow>
