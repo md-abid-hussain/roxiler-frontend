@@ -65,7 +65,7 @@ const DetailModal = ({ open, handleClose, month }: DetailModalProps) => {
           <TableBody>
             <TableRow>
               <TableCell>Total Sale</TableCell>
-              <TableCell>{data.stats.totalPrice}</TableCell>
+              <TableCell>${data.stats.totalPrice}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell>Total Sold Items</TableCell>

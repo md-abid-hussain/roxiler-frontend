@@ -43,7 +43,7 @@ const Row = ({ row }: RowProps) => {
           {row.productId}
         </TableCell>
         <TableCell key={2} sx={{fontWeight:700}}>{row.title}</TableCell>
-        <TableCell key={3}>{row.price}</TableCell>
+        <TableCell key={3}>${row.price}</TableCell>
         <TableCell key={4}>{row.category}</TableCell>
         <TableCell key={5}>{row.sold.toString()}</TableCell>
         <TableCell key={6}>
